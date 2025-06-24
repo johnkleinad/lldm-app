@@ -1,3 +1,6 @@
+import { Amplify } from 'aws-amplify';
+import amplifyConfig from './amplify_outputs.json';
+Amplify.configure(amplifyConfig);
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
