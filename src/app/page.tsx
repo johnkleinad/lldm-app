@@ -1,21 +1,18 @@
 'use client'
-import type { AppProps } from 'next/app';
 import { Authenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
-import outputs from './amplify_outputs.json';
+import outputs from '../../amplify_outputs.json';
 import '@aws-amplify/ui-react/styles.css';
+import Dashboard from '@/components/Dashboard';
 
 Amplify.configure(outputs);
 
-export default function App({ }: AppProps) {
+export default function Home() {
   return (
     <Authenticator>
       {({ signOut, user }) => (
-        <main>
-          <h1>Hello {user?.username}</h1>
-          <button onClick={signOut}>Sign out</button>
-        </main>
+        <Dashboard user={user} signOut={signOut} />
       )}
     </Authenticator>
   );
-};
+}
